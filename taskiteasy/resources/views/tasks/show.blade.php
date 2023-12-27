@@ -9,6 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/fd4690ebbf.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
     @vite('resources/css/app.css')
@@ -31,7 +32,36 @@
         @endif
 
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
-            <h3 class="text-xl font-semibold">{{ $task['title'] }}</h3>
+            <h3 class="text-xl font-semibold">
+                @switch ($task['state'])
+                    @case ('new') <i class="fa-regular fa-circle-check" style="color: #969646;"></i> @break
+                    @case ('complete') <i class="fa-solid fa-circle-check" style="color: #469646;"></i> @break
+                    @default <i class="fa-regular fa-circle-check"></i>
+                @endswitch
+                {{ $task['title'] }}
+            </h3>
+
+            <p class="text-gray-500">
+                Created at: {{ $task['created_at'] }}
+
+                @if ($task['updated_at'] !== $task['created_at'])
+                    (Updated: {{ $task['updated_at'] }})
+                @endif
+            </p>
+
+            <p>
+                @switch ($task['priority'])
+                    @case (2) <span class="text-blue-800 mr-5">Priority: Moderate</span> @break
+                    @case (3) <span class="text-yellow-800 mr-5">Priority: Urgent</span> @break
+                    @case (4) <span class="text-red-800 mr-5">Priority: Critical</span> @break
+                    @default <span class="text-gray-800 mr-5">Priority: None</span>
+                @endswitch
+
+                <span class="{{ $task['time_spent'] > $task['time_estimated'] ? 'text-red-800 font-bold' : 'text-gray-800' }}">
+                    Hours spent: {{ $task['time_spent'] }}/{{ $task['time_estimated'] }}
+                </span>
+            </p>
+
             <p class="mt-4">{{ $task['description'] }}</p>
         </div>
     </div>
