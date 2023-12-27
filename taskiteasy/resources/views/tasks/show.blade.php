@@ -31,7 +31,7 @@
             </div>
         @endif
 
-        <div class="max-w-7xl mx-auto p-6 lg:p-8">
+        <div class="max-w-7xl mx-auto p-6 lg:p-8 w-full">
             <h3 class="text-xl font-semibold mb-1">
                 @switch ($task['state'])
                     @case ('new') <i class="fa-regular fa-circle-check" style="color: #969646;"></i> @break

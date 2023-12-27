@@ -21,6 +21,12 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/tasks', function() {
+    return view('tasks.index', [
+        'tasks' => findTask(null)
+    ]);
+});
+
 Route::get('/tasks/{id}', function ($id) {
     $task = findTask($id);
 
@@ -72,6 +78,10 @@ function findTask($id): array|null {
             "completed_at" => null
         ]
     ];
+
+    if ($id === null) {
+        return $data;
+    }
 
     $filtered = array_filter($data, function ($child) use ($id) {
         return $child['id'] == $id;
