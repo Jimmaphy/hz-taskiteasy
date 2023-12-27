@@ -32,7 +32,7 @@
         @endif
 
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
-            <h3 class="text-xl font-semibold">
+            <h3 class="text-xl font-semibold mb-1">
                 @switch ($task['state'])
                     @case ('new') <i class="fa-regular fa-circle-check" style="color: #969646;"></i> @break
                     @case ('complete') <i class="fa-solid fa-circle-check" style="color: #469646;"></i> @break
@@ -41,15 +41,7 @@
                 {{ $task['title'] }}
             </h3>
 
-            <p class="text-gray-500">
-                Created at: {{ $task['created_at'] }}
-
-                @if ($task['updated_at'] !== $task['created_at'])
-                    (Updated: {{ $task['updated_at'] }})
-                @endif
-            </p>
-
-            <p>
+            <p class="mb-1">
                 @switch ($task['priority'])
                     @case (2) <span class="text-blue-800 mr-5">Priority: Moderate</span> @break
                     @case (3) <span class="text-yellow-800 mr-5">Priority: Urgent</span> @break
@@ -60,9 +52,23 @@
                 <span class="{{ $task['time_spent'] > $task['time_estimated'] ? 'text-red-800 font-bold' : 'text-gray-800' }}">
                     Hours spent: {{ $task['time_spent'] }}/{{ $task['time_estimated'] }}
                 </span>
+
+                @if ($task['completed_at'] !== null)
+                    <span class="text-gray-800 ml-5">
+                        Completed at: {{ Carbon\Carbon::parse($task['completed_at'])->locale('en_GB')->isoFormat('LLL') }}
+                    </span>
+                @endif
             </p>
 
-            <p class="mt-4">{{ $task['description'] }}</p>
+            <p class="text-gray-500 mb-4">
+                Created at: {{ Carbon\Carbon::parse($task['created_at'])->locale('en_GB')->isoFormat('LLL') }}
+
+                @if ($task['updated_at'] !== $task['created_at'])
+                    (Updated at: {{ Carbon\Carbon::parse($task['updated_at'])->locale('en_GB')->isoFormat('LLL') }})
+                @endif
+            </p>
+
+            <p>{{ $task['description'] }}</p>
         </div>
     </div>
 </body>
