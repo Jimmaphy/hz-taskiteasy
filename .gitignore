@@ -39,3 +39,5 @@ auth.json
 /.vscode
 cache/
 storage/
+build/
+hot
