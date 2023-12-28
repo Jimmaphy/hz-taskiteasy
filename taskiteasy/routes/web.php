@@ -15,17 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
 Route::get('/tasks', function() {
     return view('tasks.index', [
         'tasks' => findTask(null)
     ]);
-});
+})->name('tasks');
 
 Route::get('/tasks/{id}', function ($id) {
     $task = findTask($id);
@@ -37,7 +37,7 @@ Route::get('/tasks/{id}', function ($id) {
     return view('tasks.show', [
         'task' => findTask($id)
     ]);
-});
+})->name('tasks.show');
 
 function findTask($id): array|null {
     $data = [
