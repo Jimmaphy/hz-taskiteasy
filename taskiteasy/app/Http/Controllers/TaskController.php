@@ -28,9 +28,8 @@ class TaskController extends Controller
      * @return View The view for displaying the task.
      * @throws NotFoundHttpException When the requested ID does not exist.
      */
-    public function show(string $id): View
+    public function show(Task $task): View
     {
-        $task = Task::findOrFail($id);
         return view('tasks.show', [
             'task' => $task
         ]);

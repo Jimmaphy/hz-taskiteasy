@@ -18,4 +18,4 @@ Route::view('/', 'welcome')->name('index');
 Route::view('/about', 'about')->name('about');
 
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
-Route::get('/tasks/{id}', [TaskController::class, 'show'])->name('tasks.show');
+Route::get('/tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
