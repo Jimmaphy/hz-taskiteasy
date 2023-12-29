@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class TaskController extends Controller
 {
@@ -53,7 +55,7 @@ class TaskController extends Controller
      */
     public function index(): View {
         return view('tasks.index', [
-            'tasks' => $this->data
+            'tasks' => DB::table('tasks')->get()
         ]);
     }
 
@@ -62,10 +64,17 @@ class TaskController extends Controller
      *
      * @param string $id The ID of the task to show.
      * @return View The view for displaying the task.
+     * @throws NotFoundHttpException When the requested ID does not exist.
      */
     public function show(string $id): View {
+        $task = DB::table('tasks')->where('id', '=', $id)->get();
+
+        if(count($task) !== 1) {
+            abort(404);
+        }
+
         return view('tasks.show', [
-            'task' => $this->findTask($id)
+            'task' => $task[0]
         ]);
     }
 
