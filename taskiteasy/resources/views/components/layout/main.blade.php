@@ -28,6 +28,7 @@
                         <div class="flex space-x-4">
                             <x-nav.navitem :route="'index'" :name="'Home'" />
                             <x-nav.navitem :route="'tasks'" :name="'Tasks'" />
+                            <x-nav.navitem :route="'posts'" :name="'Posts'" />
                             <x-nav.navitem :route="'about'" :name="'About'" />
                         </div>
                     </div>

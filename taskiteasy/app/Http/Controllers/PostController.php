@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
+use App\Models\Post;
 use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class TaskController extends Controller
+class PostController extends Controller
 {
     /**
      * Returns the view for the index page.
@@ -16,22 +16,22 @@ class TaskController extends Controller
      */
     public function index(): View
     {
-        return view('tasks.index', [
-            'tasks' => Task::get()
+        return view('posts.index', [
+            'posts' => Post::get()
         ]);
     }
 
     /**
      * Show the task with the given ID.
      *
-     * @param Task $task The Task to show.
+     * @param Post $post The post to show.
      * @return View The view for displaying the task.
      * @throws NotFoundHttpException When the requested ID does not exist.
      */
-    public function show(Task $task): View
+    public function show(Post $post): View
     {
-        return view('tasks.show', [
-            'task' => $task
+        return view('posts.show', [
+            'post' => $post
         ]);
     }
 }

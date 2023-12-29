@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TaskController;
+use \App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,6 @@ Route::view('/about', 'about')->name('about');
 
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
 Route::get('/tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
