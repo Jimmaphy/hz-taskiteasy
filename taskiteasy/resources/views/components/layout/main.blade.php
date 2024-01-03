@@ -9,7 +9,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+    <!-- Packages -->
     <script src="https://kit.fontawesome.com/fd4690ebbf.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tiny.cloud/1/5jlufh6pvnoekjnwlywgcl5f5n5nk1rh5vf9ap1g5pudislo/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Styles -->
     @vite('resources/css/app.css')
@@ -53,7 +56,7 @@
         </div>
     </nav>
 
-    <div class="relative flex justify-center {{ $flexDirection ?? '' }} items-center selection:bg-red-500 selection:text-white flex-grow">
+    <div class="relative flex justify-center {{ $flexDirection ?? '' }} items-center selection:bg-red-500 selection:text-white flex-grow m-5">
         {{ $slot }}
     </div>
 </body>

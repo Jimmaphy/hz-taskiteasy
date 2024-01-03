@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -33,5 +35,16 @@ class PostController extends Controller
         return view('posts.show', [
             'post' => $post
         ]);
+    }
+
+    public function new(): View
+    {
+        return view('posts.create');
+    }
+
+    public function create(Request $request): RedirectResponse
+    {
+        $post = Post::create($request->all());
+        return redirect()->route('posts.show', $post);
     }
 }
