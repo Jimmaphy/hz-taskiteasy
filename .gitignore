@@ -37,7 +37,5 @@ auth.json
 /.fleet
 /.idea
 /.vscode
-cache/
-storage/
 build/
 hot
