@@ -37,20 +37,35 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * Returns the view for the new post page.
+     * This page contains a form to create a new post.
+     *
+     * @return View The view for the new post page.
+     */
     public function new(): View
     {
         return view('posts.create');
     }
 
+    /**
+     * Creates a new post.
+     * The provided data is validated and the post is created.
+     * If the post is created successfully, the user is redirected to the new post.
+     * If the post is not created successfully, the user is redirected back with the errors.
+     *
+     * @param Request $request The request containing the post data.
+     * @return RedirectResponse The response to redirect to the new post.
+     */
     public function create(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
+        $post = $request->validate([
             'title' => 'required|max:255',
             'excerpt' => 'required|max:255',
             'body' => 'required'
         ]);
 
-        $post = Post::create($validated);
+        $post = Post::create($post);
         return redirect()->route('posts.show', $post);
     }
 }

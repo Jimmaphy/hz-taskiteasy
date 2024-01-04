@@ -19,6 +19,8 @@ Route::view('/', 'welcome')->name('index');
 Route::view('/about', 'about')->name('about');
 
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
+Route::get('/tasks/create', [TaskController::class, 'new'])->name('tasks.new');
+Route::post('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
 Route::get('/tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
