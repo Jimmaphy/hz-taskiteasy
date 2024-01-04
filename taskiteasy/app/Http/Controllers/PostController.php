@@ -66,6 +66,9 @@ class PostController extends Controller
         ]);
 
         $post = Post::create($post);
-        return redirect()->route('posts.show', $post);
+
+        return redirect()
+            ->route('posts.show', $post)
+            ->with('success', 'Post created successfully!');
     }
 }

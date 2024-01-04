@@ -67,6 +67,9 @@ class TaskController extends Controller
         ]);
 
         $task = Task::create($task);
-        return redirect()->route('tasks.show', $task);
+
+        return redirect()
+            ->route('tasks.show', $task)
+            ->with('success', 'Task created successfully!');
     }
 }

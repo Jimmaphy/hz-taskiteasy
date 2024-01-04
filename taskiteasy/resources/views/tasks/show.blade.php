@@ -1,3 +1,6 @@
 <x-layout.main title="{{ $task->title }}">
-    <x-task.extended :task="$task" />
+    <div class="flex flex-col">
+        <x-general.successmessage />
+        <x-task.extended :task="$task" />
+    </div>
 </x-layout.main>

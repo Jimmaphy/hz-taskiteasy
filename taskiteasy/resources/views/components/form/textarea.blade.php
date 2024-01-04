@@ -3,15 +3,17 @@
     <x-form.error :name="$name" :errors="$errors" />
 </div>
 
-<textarea
-    id="{{ $name }}"
-    name="{{ $name }}"
-    rows="10">
-    {{ old($name) }}
-</textarea>
+<div class="mb-2">
+    <textarea
+        id="{{ $name }}"
+        name="{{ $name }}">
+        {{ old($name) }}
+    </textarea>
+</div>
 
 <script>
     tinymce.init({
-      selector: '#{{ $name }}'
+      selector: '#{{ $name }}',
+      height: {{ $height ?? 400 }},
     });
 </script>
