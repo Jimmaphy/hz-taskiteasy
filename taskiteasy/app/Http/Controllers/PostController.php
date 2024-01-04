@@ -44,7 +44,13 @@ class PostController extends Controller
 
     public function create(Request $request): RedirectResponse
     {
-        $post = Post::create($request->all());
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'excerpt' => 'required|max:255',
+            'body' => 'required'
+        ]);
+
+        $post = Post::create($validated);
         return redirect()->route('posts.show', $post);
     }
 }
