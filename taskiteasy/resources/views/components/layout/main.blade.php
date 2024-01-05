@@ -59,5 +59,7 @@
     <div class="relative flex justify-center {{ $flexDirection ?? '' }} items-center selection:bg-red-500 selection:text-white flex-grow m-5">
         {{ $slot }}
     </div>
+
+    @stack('scripts')
 </body>
 </html>

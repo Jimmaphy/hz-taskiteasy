@@ -110,4 +110,20 @@ class PostController extends Controller
             ->route('posts.show', $post)
             ->with('success', 'Post updated successfully!');
     }
+
+    /**
+     * Deletes the post with the given ID.
+     * If the post is deleted successfully, the user is redirected to the index page.
+     * If the post is not deleted successfully, the user is redirected back with the errors.
+     *
+     * @param Post $post The post to delete.
+     * @return RedirectResponse The response to redirect to the index page.
+     */
+    public function delete(Post $post): RedirectResponse {
+        $post->delete();
+
+        return redirect()
+            ->route('posts')
+            ->with('success', 'Post deleted successfully!');
+    }
 }

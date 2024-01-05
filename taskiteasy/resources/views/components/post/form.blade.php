@@ -13,7 +13,7 @@
         <x-form.input :name="'title'" :label="'Title'" :value="$post->title ?? ''" />
         <x-form.textarea :name="'excerpt'" :label="'Excerpt'" :height="200" :value="$post->excerpt ?? ''" />
         <x-form.textarea :name="'body'" :label="'Body'" :value="$post->body ?? ''" />
-        <x-form.addandcancelbuttons :href="isset($post) ? route('posts.show', ['post' => $post->id]) : route('posts')" />
+        <x-form.addandcancelbuttons :href="isset($post) ? route('posts.show', ['post' => $post->id]) : route('posts')"/>
     </form>
 
     <x-form.validationfunctions />
