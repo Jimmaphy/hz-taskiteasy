@@ -3,7 +3,7 @@
         Completed at: {{ Carbon\Carbon::parse($task->completed_at)->locale('en_GB')->isoFormat('LLL') }}
     </span>
 
-@elseif ($task->updated_at !== $task->created_at)
+@elseif ($task->updated_at->isoFormat('LLL') !== $task->created_at->isoFormat('LLL'))
     <span class="ml-5">
         Updated at: {{ Carbon\Carbon::parse($task->updated_at)->locale('en_GB')->isoFormat('LLL') }}
     </span>

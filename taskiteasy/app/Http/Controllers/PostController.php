@@ -71,4 +71,43 @@ class PostController extends Controller
             ->route('posts.show', $post)
             ->with('success', 'Post created successfully!');
     }
+
+    /**
+     * Returns the view for the edit post page.
+     * This page contains a form to edit the post.
+     *
+     * @param Post $post The post to edit.
+     * @return View The view for the edit post page.
+     */
+    public function edit(Post $post): View
+    {
+        return view('posts.edit', [
+            'post' => $post
+        ]);
+    }
+
+    /**
+     * Updates the post with the given ID.
+     * The provided data is validated and the post is updated.
+     * If the post is updated successfully, the user is redirected to the updated post.
+     * If the post is not updated successfully, the user is redirected back with the errors.
+     *
+     * @param Request $request The request containing the post data.
+     * @param Post $post The post to update.
+     * @return RedirectResponse The response to redirect to the updated post.
+     */
+    public function update(Request $request, Post $post): RedirectResponse
+    {
+        $validated_post = $request->validate([
+            'title' => 'required|max:255',
+            'excerpt' => 'required|max:255',
+            'body' => 'required'
+        ]);
+
+        $post->update($validated_post);
+
+        return redirect()
+            ->route('posts.show', $post)
+            ->with('success', 'Post updated successfully!');
+    }
 }

@@ -7,7 +7,7 @@
     <textarea
         id="{{ $name }}"
         name="{{ $name }}">
-        {{ old($name) }}
+        {{ isset($value) ? $value : old($name) }}
     </textarea>
 </div>
 
