@@ -15,4 +15,8 @@
         field = number(field);
         return !(field >= min && field <= max) ? `${fieldName} must be between ${min} and ${max}\n` : "";
     }
+
+    function fieldIsOption(field, fieldName, options) {
+        return !(options.includes(field)) ? `${fieldName} must be one of ${options}\n` : "";
+    }
 </script>

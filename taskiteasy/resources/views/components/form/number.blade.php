@@ -5,7 +5,7 @@
     type="number"
     id="{{ $name }}"
     name="{{ $name }}"
-    value="{{ old($name) }}"
+    value="{{ isset($value) ? $value : old($name) }}"
     min="{{ $min ?? 0 }}"
     max="{{ $max ?? 100 }}"
     step="{{ $step ?? 1 }}"

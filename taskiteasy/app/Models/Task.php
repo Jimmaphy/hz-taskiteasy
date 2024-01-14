@@ -42,5 +42,8 @@ class Task extends Model
         'description',
         'priority',
         'time_estimated',
+        'time_spent',
+        'state',
+        'completed_at'
     ];
 }
