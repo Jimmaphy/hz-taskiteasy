@@ -43,7 +43,7 @@ class TaskController extends Controller
      *
      * @return View The view for the new task page.
      */
-    public function new(): View
+    public function create(): View
     {
         return view('tasks.create');
     }
@@ -57,7 +57,7 @@ class TaskController extends Controller
      * @param Request $request The request containing the task data.
      * @return RedirectResponse The response to redirect to the new task.
      */
-    public function create(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $task = $request->validate([
             'title' => 'required|max:255',

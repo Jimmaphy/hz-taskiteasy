@@ -1,5 +1,5 @@
 <x-general.contentblock>
-    <form name="taskform" method="POST" action="{{ route('tasks.create') }}" onsubmit="return validateForm()">
+    <form name="taskform" method="POST" action="{{ route('tasks.store') }}" onsubmit="return validateForm()">
         @csrf
 
         <x-form.input :name="'title'" :label="'Title'" />
@@ -13,7 +13,7 @@
         </x-form.select>
 
         <x-form.number :name="'time_estimated'" :label="'Time Estimation (Hours)'" />
-        <x-form.addandcancelbuttons :href="route('tasks')" />
+        <x-form.addandcancelbuttons :href="route('tasks.index')" />
     </form>
 
     <x-form.validationfunctions />

@@ -43,7 +43,7 @@ class PostController extends Controller
      *
      * @return View The view for the new post page.
      */
-    public function new(): View
+    public function create(): View
     {
         return view('posts.create');
     }
@@ -57,7 +57,7 @@ class PostController extends Controller
      * @param Request $request The request containing the post data.
      * @return RedirectResponse The response to redirect to the new post.
      */
-    public function create(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $post = $request->validate([
             'title' => 'required|max:255',
@@ -119,11 +119,11 @@ class PostController extends Controller
      * @param Post $post The post to delete.
      * @return RedirectResponse The response to redirect to the index page.
      */
-    public function delete(Post $post): RedirectResponse {
+    public function destroy(Post $post): RedirectResponse {
         $post->delete();
 
         return redirect()
-            ->route('posts')
+            ->route('posts.index')
             ->with('success', 'Post deleted successfully!');
     }
 }

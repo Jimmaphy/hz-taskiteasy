@@ -30,8 +30,8 @@
                     <div class="ml-6">
                         <div class="flex space-x-4">
                             <x-nav.navitem :route="'index'" :name="'Home'" />
-                            <x-nav.navitem :route="'tasks'" :name="'Tasks'" />
-                            <x-nav.navitem :route="'posts'" :name="'Posts'" />
+                            <x-nav.navitem :route="'tasks.index'" :name="'Tasks'" />
+                            <x-nav.navitem :route="'posts.index'" :name="'Posts'" />
                             <x-nav.navitem :route="'projects.index'" :name="'Projects'" />
                             <x-nav.navitem :route="'about'" :name="'About'" />
                         </div>
