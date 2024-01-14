@@ -16,6 +16,7 @@ cd .\hz-taskiteasy\taskiteasy\
 composer install
 npm install
 cp .\.env.example .env
+php artisan key:generate
 ```
 
 ```bash
@@ -25,6 +26,7 @@ cd ./hz-taskiteasy/taskiteasy/
 composer install
 npm install
 cp ./.env.example .env
+php artisan key:generate
 ```
 
 When the project is setup,

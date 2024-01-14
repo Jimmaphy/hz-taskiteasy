@@ -1,5 +1,5 @@
 <x-general.contentblock>
-    <form name="taskform" method="POST" action="{{ route('tasks.create') onsubmit="return validateForm()"}}">
+    <form name="taskform" method="POST" action="{{ route('tasks.create') }}" onsubmit="return validateForm()">
         @csrf
 
         <x-form.input :name="'title'" :label="'Title'" />
